@@ -3,19 +3,19 @@
 STD=-std=c11
 FLAGS=-c -W -Wall -pedantic
 
-build: bin/static/cgraph.a
+build: bin/static/libcgraph.a
 
-test: src/test.c
 test: FLAGS += -g -O0
+test: src/test.c
 
 clean:
 	rm -rf bin
 
-src/test.c: bin/static/cgraph.a
+src/test.c: bin/static/libcgraph.a
 	gcc $(STD) -o bin/test.o src/test.c $(FLAGS)
 	gcc $(STD) -o bin/test bin/test.o -Lbin/static -lcgraph
 
-bin/static/cgraph.a: bin/list.o
+bin/static/libcgraph.a: bin/list.o
 	ar rcs bin/static/libcgraph.a bin/static/list.o bin/static/node.o bin/static/data.o
 
 bin/list.o: bin/node.o
