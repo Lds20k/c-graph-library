@@ -16,7 +16,7 @@ src/test.c: bin/static/libcgraph.a
 	gcc $(STD) -o bin/test bin/test.o -Lbin/static -lcgraph
 
 bin/static/libcgraph.a: bin/list.o
-	ar rcs bin/static/libcgraph.a bin/static/list.o bin/static/node.o bin/static/data.o
+	ar -rcs bin/static/libcgraph.a bin/static/list.o bin/static/node.o bin/static/data.o
 
 bin/list.o: bin/node.o
 	gcc $(STD) -o bin/static/list.o src/cgraph/list/list.c $(FLAGS)
