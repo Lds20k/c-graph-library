@@ -10,6 +10,7 @@ data_t* create_data(char* content_type, size_t content_size, void* content){
         free(new_data);
         return NULL;
     }
+    strcpy(new_data->data_type, content_type);
 
     new_data->data = (char*) calloc(1, content_size);
     if(new_data->data == NULL){

@@ -17,5 +17,6 @@ static const size_t SIZE_OF_LIST = sizeof(list_t);
 list_t* create_list();
 void destroy_list(list_t* list);
 bool add_to_list(list_t* list, char* content_type, size_t content_size, void* content);
+data_t* get_from_list(list_t* list, unsigned long index);
 
 #endif
