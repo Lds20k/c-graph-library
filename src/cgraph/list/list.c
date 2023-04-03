@@ -6,16 +6,14 @@ list_t* create_list(){
 }
 
 void destroy_list(list_t* list){
-    if (list->start != NULL){
-        for (size_t i = 0; i < list->length; i++)
-        {
-            node_t* next_node = list->start->edges;
-            list->start->edges_size = 0;
-            destroy_node(list->start);
-            list->start = next_node;
-        }
-        list->length = 0;
+    for (size_t i = 0; i < list->length; i++)
+    {
+        node_t* next_node = list->start->edges;
+        list->start->edges_size = 0;
+        destroy_node(list->start);
+        list->start = next_node;
     }
+    list->length = 0;
 
     free(list);
 }
@@ -34,4 +32,10 @@ bool add_to_list(list_t* list, char* content_type, size_t content_size, void* co
 
     list->length++;
     return false;
+}
+
+data_t* get_from_list(list_t* list, unsigned long index){
+    node_t* next_node = list->start;
+    for (size_t i = 0; i < index; i++) next_node = next_node->edges;
+    return next_node->data;
 }
