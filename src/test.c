@@ -68,7 +68,7 @@ void create_list_and_add_many_test(){
         char characters[11] = "ABCDEFGHIJ\0";
         const size_t size = strlen(characters);
         for (size_t i = 0; i < size; i++) {
-            if(add_to_list(list, "char*", size, &characters[i])){
+            if(add_to_list(list, "char*", size + 1, &characters[i])){
                 destroy_list(list);
                 printf("Out of memory");
                 return;

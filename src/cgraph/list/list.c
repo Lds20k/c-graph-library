@@ -35,6 +35,8 @@ bool add_to_list(list_t* list, char* content_type, size_t content_size, void* co
 }
 
 data_t* get_from_list(list_t* list, unsigned long index){
+    if(index >= list->length) return NULL;
+    
     node_t* next_node = list->start;
     for (size_t i = 0; i < index; i++) next_node = next_node->edges;
     return next_node->data;
